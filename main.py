@@ -8,7 +8,7 @@ import argparse
 import sys
 import traceback
 
-from src.utils.ejecutar_ejercicios import ejecutar_ejercicio1, ejecutar_ejercicio2
+from src.utils.ejecutar_ejercicios import ejecutar_ejercicio1, ejecutar_ejercicio2, ejecutar_ejercicio3
 
 
 def main():
@@ -28,7 +28,7 @@ Ejemplos de uso:
     parser.add_argument(
         '-ex',
         type=int,
-        choices=[1, 2],
+        choices=[1, 2, 3],
         metavar='N',
         help='Ejecuta solo el ejercicio N (disponibles: 1, 2)'
     )
@@ -47,8 +47,15 @@ Ejemplos de uso:
         # Determinar qué ejecutar
         if args.ex == 1:
             ejecutar_ejercicio1()
-        if args.ex == 2:
+        elif args.ex == 2:
             ejecutar_ejercicio2()
+        elif args.ex == 3:
+            ejecutar_ejercicio3()
+        else:
+            # Si no se especifica ejercicio, ejecutar todos en orden
+            ejecutar_ejercicio1()
+            ejecutar_ejercicio2()
+            ejecutar_ejercicio3()
 
         print("\n" + "█"*60)
         print("█" + " "*58 + "█")

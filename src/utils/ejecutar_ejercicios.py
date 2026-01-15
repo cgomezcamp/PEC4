@@ -1,9 +1,10 @@
+import os
 from pathlib import Path
 import sys
 
 import pandas as pd
 
-from src.modules import ejercicio1, ejercicio2
+from src.modules import ejercicio1, ejercicio2, ejercicio3
 
 
 def ejecutar_ejercicio1():
@@ -94,3 +95,30 @@ def ejecutar_ejercicio2():
     print("\n✅ Ejercicio 2 completado")
 
     return df_fusionado
+
+
+def ejecutar_ejercicio3():
+    """
+    Ejecuta el Ejercicio 3: Análisis Visual.
+    """
+    print("\n" + "*"*60)
+    print("EJERCICIO 3: ANÁLISIS VISUAL DE TENDENCIAS")
+    print("*"*60)
+
+    ruta_fusionado = 'data/dataset_fusionado.csv'
+
+    if not os.path.exists(ruta_fusionado):
+        print(f"⚠️ El archivo {ruta_fusionado} no existe. Ejecutando Ejer 2")
+        df_fusionado = ejecutar_ejercicio2()
+    else:
+        print(f"📂 Cargando dataset fusionado desde {ruta_fusionado}...")
+        df_fusionado = pd.read_csv(ruta_fusionado)
+
+    # Solicitar nombre para el archivo
+    nombre = input("Introduce tu nombre para el archivo de salida: ").strip()
+    if not nombre:
+        nombre = "alumno"
+
+    ejercicio3.generar_graficos_series_temporales(df_fusionado, nombre)
+
+    print("\n✅ Ejercicio 3 completado")
