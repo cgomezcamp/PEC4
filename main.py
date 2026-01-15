@@ -8,7 +8,7 @@ import argparse
 import sys
 import traceback
 
-from src.utils.ejecutar_ejercicios import ejecutar_ejercicio1,ejecutar_ejercicio2, ejecutar_ejercicio3, ejecutar_ejercicio4
+from src.utils.ejecutar_ejercicios import ejecutar_ejercicio1, ejecutar_ejercicio2, ejecutar_ejercicio3, ejecutar_ejercicio4
 
 
 def main():

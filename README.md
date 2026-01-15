@@ -99,18 +99,136 @@ python main.py -h
 
 
 
-## 🧪 Tests
-```powershell
-# Ejecutar tests
-python -m unittest tests/test_ejercicio1.py -v
+## 🧪 Tests Unitarios
+
+Este proyecto incluye una suite completa de tests unitarios con `unittest` que cubren todos los módulos principales.
+
+### Estructura de Tests
 ```
+tests/
+├── test_ejercicio1.py          # Tests para load_dataset y EDA
+├── test_ejercicio2.py          # Tests para limpieza y fusión
+├── test_ejercicio3.py          # Tests para análisis visual
+├── test_ejercicio4.py          # Tests para análisis estadístico
+├── test_ejecutar_ejercicios.py # Tests para módulo ejecutor
+├── test_main.py                # Tests para punto de entrada
+└── run_tests.py                # Script ejecutor de tests
+```
+
+### Ejecutar los Tests
+
+**Opción 1: Ejecutar todos los tests**
+```bash
+# Windows (PowerShell)
+$env:PYTHONPATH = $PWD
+python tests/run_tests.py
+
+```
+
+**Opción 2: Ejecutar tests específicos**
+```bash
+# Un módulo completo
+python -m unittest tests.test_ejercicio1 -v
+
+```
+
+### Cobertura de Tests
+
+Para medir la cobertura de código:
+```bash
+# Instalar coverage
+pip install coverage
+
+# Ejecutar tests con cobertura
+coverage run -m unittest discover -s tests -p "test_*.py"
+
+# Ver reporte en consola
+coverage report -m
+
+# Generar reporte HTML interactivo
+coverage html
+start htmlcov/index.html
+```
+
+**Cobertura actual:** ~95% del código
+
+---
+
+## 📚 Documentación
+
+La documentación del proyecto se genera automáticamente desde los docstrings del código usando Sphinx.
+
+### Generar Documentación
+
+**Requisitos previos:**
+```bash
+pip install sphinx sphinx-rtd-theme
+```
+
+**Generar HTML:**
+```bash
+cd docs
+sphinx-build -b html source build/html
+```
+
+**Ver documentación:**
+```bash
+# Windows
+start build/html/index.html
+
+```
+
+## 🔍 Linter (Calidad de Código)
+
+El proyecto utiliza **pylint** para garantizar que el código sigue las convenciones de estilo de Python (PEP8) y mantiene alta calidad.
+
+
+### Ejecutar Análisis
+```bash
+# Analizar todo el código
+pylint src/ main.py
+
+# Ver reporte detallado con score
+pylint src/ main.py --reports=y
+```
+
+### Configuración
+
+El archivo `.pylintrc` contiene las excepciones justificadas para este proyecto:
+- Nombres cortos aceptados en ciencia de datos (`df`, `ax`, `fig`)
+- Límites ajustados para funciones de análisis complejas
+- Exclusión de warnings de librerías externas (pandas, matplotlib)
+
+### Score de Calidad
+
+**Score obtenido: > 9.85/10** ✅
+
+
 
 ## 📦 Dependencias
 
-- `pandas` - Manipulación de datos
-- `openpyxl` - Lectura de archivos Excel
-- `numpy` - Operaciones numéricas
-- `spicy` - Funciones estadísticas
+- Ver requirements.txt
+
+## 💡 Nota sobre Gestión de Dependencias
+
+> **Nota del desarrollador:** Personalmente prefiero usar **Pipenv** y **Pipfile** para la gestión de dependencias y entornos virtuales en Python, ya que ofrece:
+> - Gestión integrada de dependencias y entornos virtuales
+> - Resolución automática de conflictos de versiones
+> - Lock file determinístico para builds reproducibles
+> - Separación clara entre dependencias de producción y desarrollo
+>
+> Sin embargo, para este proyecto se ha utilizado **virtualenv** y **requirements.txt** siguiendo las especificaciones de la PEC.
+>
+> **Alternativa con Pipenv:**
+> ```bash
+> # Si prefieres usar Pipenv
+> pip install pipenv
+> pipenv install pandas numpy matplotlib openpyxl scipy
+> pipenv install --dev pytest coverage pylint sphinx
+> pipenv shell
+> ```
+
+---
 
 ## 📄 Licencia
 
@@ -120,5 +238,6 @@ Programación para la Ciencia de Datos.
 ## 👤 Autor
 
 Cristina Gómez Campos
-Programación para la ciencia de datos - PEC4  
+Universitat Oberta de Catalunya (UOC)  
+Programación para la Ciencia de Datos - PEC4  
 Enero 2026

@@ -1,0 +1,69 @@
+[MASTER]
+# Archivos y directorios a ignorar
+ignore=venv,__pycache__,.git,build,dist,docs,htmlcov
+ignore-patterns=test_.*?py,.*_test.py
+
+# Usar múltiples procesos para acelerar pylint
+jobs=4
+
+[MESSAGES CONTROL]
+# Deshabilitar mensajes que no son críticos o dificultan la legibilidad
+disable=
+    C0111,  # missing-docstring (ya tienes docstrings donde es importante)
+    C0103,  # invalid-name (nombres de variables cortas como df, ax son comunes en data science)
+    R0913,  # too-many-arguments (común en funciones de configuración)
+    R0914,  # too-many-locals (común en funciones de análisis)
+    R0915,  # too-many-statements (común en funciones complejas)
+    W0212,  # protected-access (a veces necesario en tests)
+    C0302,  # too-many-lines (algunos módulos pueden ser largos)
+    R0801,  # duplicate-code (común en tests)
+    W0511,  # fixme/todo comments
+    E1101,  # no-member (falsos positivos con pandas)
+    W0621,  # redefined-outer-name (común en tests con fixtures)
+    C0415,  # import-outside-toplevel (a veces necesario)
+    R0903,  # too-few-public-methods (clases de datos)
+    R0912,  # too-many-branches (lógica compleja legítima)
+
+[FORMAT]
+# Número máximo de caracteres por línea
+max-line-length=100
+
+# Número máximo de líneas por módulo
+max-module-lines=1000
+
+# Indentación con 4 espacios (PEP8)
+indent-string='    '
+
+[BASIC]
+# Convenciones de nombres
+good-names=i,j,k,df,ax,fig,x,y,n,_
+
+# Expresiones regulares para nombres de variables
+variable-rgx=[a-z_][a-z0-9_]{0,30}$
+const-rgx=(([A-Z_][A-Z0-9_]*)|(__.*__))$
+attr-rgx=[a-z_][a-z0-9_]{1,30}$
+argument-rgx=[a-z_][a-z0-9_]{1,30}$
+
+[DESIGN]
+# Máximo número de atributos en una clase
+max-attributes=10
+
+# Máximo de argumentos en funciones
+max-args=8
+
+# Máximo de locales en función
+max-locals=20
+
+# Máximo de returns en función
+max-returns=6
+
+# Máximo de branches
+max-branches=15
+
+[SIMILARITIES]
+# Mínimo de líneas similares para detectar duplicación
+min-similarity-lines=10
+
+[IMPORTS]
+# Permitir importaciones wildcard en casos específicos
+allow-wildcard-with-all=no
