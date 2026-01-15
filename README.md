@@ -2,28 +2,38 @@
 
 ## 📋 Descripción
 
-Implementación del **Ejercicio 1** de la PEC4: carga de datasets y análisis exploratorio de datos (EDA) para el estudio del rendimiento académico y abandono universitario en Cataluña.
+Este proyecto ha sido desarrollado para la **PEC4**, centrándose en el análisis del sistema universitario catalán.  
+
 
 ## 📁 Estructura del Proyecto
 ```
-proyecto_ej1/
+PEC4/
 │
-├── main.py                      # Punto de entrada principal
-├── README.md                    # Esta documentación
-├── LICENSE                      # Licencia del proyecto
-├── requirements.txt             # Dependencias
+├── main.py                     # Punto de entrada y orquestador del proyecto
+├── README.md                   # Documentación del proyecto
+├── requirements.txt            # Dependencias necesarias
 │
 ├── src/
-│   └── modules/
-│       ├── __init__.py
-│       └── ejercicio1.py        # Módulo del ejercicio 1
+│   ├── modules/                # Lógica central dividida por ejercicios
+│   │   ├── __init__.py
+│   │   ├── ejercicio1.py       # Carga y Análisis Exploratorio (EDA)
+│   │   ├── ejercicio2.py       # Limpieza, normalización y fusión
+│   │   ├── ejercicio3.py       # Análisis visual y series temporales
+│   │   └── ejercicio4.py       # Estadística avanzada y exportación JSON
+│   │
+│   ├── utils/
+│   │   └── ejecutar_ejercicios.py  # Gestión del flujo de ejecución
+│   │
+│   ├── img/                    # Gráficos generados (.png)
+│   └── report/                 # Informes finales (.json)
 │
-├── tests/
-│   └── test_ejercicio1.py      # Tests unitarios
+├── data/                       # Almacén de datos
+│   ├── rendiment_estudiants.xlsx
+│   ├── taxa_abandonament.xlsx
+│   └── dataset_fusionado.csv
 │
-└── data/                        # Datasets
-    ├── rendiment_estudiants.xlsx
-    └── taxa_abandonament.xlsx
+└── tests/                      # Pruebas unitarias
+    └── test_pec4.py
 ```
 
 ## 🚀 Instalación
@@ -50,15 +60,13 @@ deactivate
 
 ## 💻 Ejecución
 
-### Opción 1: Ejecución simple
-```powershell
-python main.py
-```
-
-### Opción 2: Con argumentos
-```powershell
-# Ejecutar el ejercicio 1 explícitamente
-python main.py -ex 1
+| Objetivo                       | Comando              |
+| ------------------------------ | -------------------- |
+| Ejecutar todo el flujo         | python main.py       |
+| Solo Ejercicio 1 (EDA)         | python main.py -ex 1 |
+| Solo Ejercicio 2 (Fusión)      | python main.py -ex 2 |
+| Solo Ejercicio 3 (Gráficos)    | python main.py -ex 3 |
+| Solo Ejercicio 4 (Estadística) | python main.py -ex 4 |
 
 # Ver ayuda
 python main.py -h
@@ -66,7 +74,7 @@ python main.py -h
 
 ## 🔄 Funcionamiento
 
-### Flujo de Ejecución
+### Flujo de Ejecución ejercicio 1
 
 1. **Configuración inicial**: El programa pregunta si deseas usar una ruta personalizada
    - **Si respondes `s`**: Introduces la ruta completa del archivo
@@ -79,28 +87,17 @@ python main.py -h
    - **1.2** Lista todas las columnas
    - **1.3** Información del DataFrame (tipos, valores nulos, memoria)
 
-### Ejemplo de uso
-```
-¿Deseas usar una ruta personalizada? (s/n): n
+### Flujo de Ejecución ejercicio 2
+   - Se ejecuta todo sin interacción del usuario.
 
-Opciones disponibles:
-  1 - rendiment_estudiants.xlsx
-  2 - taxa_abandonament.xlsx
-Selecciona una opción (1/2): 1
+### Flujo de Ejecución ejercicio 3
+   - Se ejecuta.
+   - Solicita el nombre para guardar la imagen.
 
-✓ Dataset cargado: 14117 filas, 14 columnas
-```
+### Flujo de Ejecución ejercicio 4
+   - Se ejecuta todo sin interacción del usuario.
 
-## 📚 Funcionalidades
 
-### `load_dataset(path=None)`
-Carga un dataset desde un archivo Excel. Si no se proporciona ruta, pregunta al usuario.
-
-### `realizar_eda(df)`
-Ejecuta el análisis exploratorio completo:
-- `mostrar_primeras_filas(df, n=5)` - Primeras n filas
-- `mostrar_columnas(df)` - Lista de columnas
-- `mostrar_info(df)` - Información detallada
 
 ## 🧪 Tests
 ```powershell
@@ -110,16 +107,18 @@ python -m unittest tests/test_ejercicio1.py -v
 
 ## 📦 Dependencias
 
-- `pandas>=1.3.0` - Manipulación de datos
-- `openpyxl>=3.0.0` - Lectura de archivos Excel
-- `numpy>=1.21.0` - Operaciones numéricas
+- `pandas` - Manipulación de datos
+- `openpyxl` - Lectura de archivos Excel
+- `numpy` - Operaciones numéricas
+- `spicy` - Funciones estadísticas
 
 ## 📄 Licencia
 
-[Especifica tu licencia aquí]
+Este proyecto es de uso académico para la asignatura
+Programación para la Ciencia de Datos.
 
 ## 👤 Autor
 
-[Tu nombre]  
+Cristina Gómez Campos
 Programación para la ciencia de datos - PEC4  
 Enero 2026
