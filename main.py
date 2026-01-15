@@ -8,7 +8,7 @@ import argparse
 import sys
 import traceback
 
-from src.utils.ejecutar_ejercicios import ejecutar_ejercicio1, ejecutar_ejercicio2, ejecutar_ejercicio3, ejecutar_ejercicio4
+from src.utils.ejecutar_ejercicios import ejecutar_ejercicio1,ejecutar_ejercicio2, ejecutar_ejercicio3, ejecutar_ejercicio4
 
 
 def main():
@@ -30,7 +30,7 @@ Ejemplos de uso:
         type=int,
         choices=[1, 2, 3, 4],
         metavar='N',
-        help='Ejecuta solo el ejercicio N (disponibles: 1, 2)'
+        help='Ejecuta solo el ejercicio N (disponibles: 1, 2, 3, 4)'
     )
 
     args = parser.parse_args()
