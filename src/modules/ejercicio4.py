@@ -49,7 +49,6 @@ def analyze_dataset(merged_df: pd.DataFrame):
             'Taxa rendiment': 'mean'
         }).reset_index()
 
-
         def calcular_tendencia(valores):
             if len(valores) < 2:
                 return "estable"
