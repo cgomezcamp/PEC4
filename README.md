@@ -1,4 +1,4 @@
-# PEC4 - Ejercicio 1: Load Dataset y EDA
+# PEC4 - Cristina Gómez Campos
 
 ## 📋 Descripción
 
