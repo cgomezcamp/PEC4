@@ -1,0 +1,22 @@
+# Análisis de datos
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Visualización
+matplotlib>=3.7.0
+
+# Manipulación de archivos Excel
+openpyxl>=3.1.0
+
+# Análisis estadístico
+scipy>=1.10.0
+
+# Testing (opcional - solo si quieres medir cobertura)
+coverage>=7.0.0
+
+# Documentación
+sphinx>=7.0.0
+sphinx-rtd-theme>=2.0.0
+
+# Linting (análisis de calidad de código)
+pylint>=3.0.0

@@ -1,0 +1,15 @@
+venv/
+.venv/
+env/
+ENV/
+bin/
+lib/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.env
+.venv
+.secret
+.secrets

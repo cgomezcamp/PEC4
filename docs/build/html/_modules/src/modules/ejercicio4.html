@@ -1,0 +1,213 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>src.modules.ejercicio4 &mdash; documentación de PEC4 - 1.0</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=4936afed"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            PEC4
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PEC4</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">src.modules.ejercicio4</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para src.modules.ejercicio4</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Ejercicio 4: Análisis estadístico automatizado.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">pearsonr</span><span class="p">,</span> <span class="n">linregress</span>
+
+
+<div class="viewcode-block" id="analyze_dataset">
+<a class="viewcode-back" href="../../../moddules/ejercicio4.html#src.modules.ejercicio4.analyze_dataset">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">analyze_dataset</span><span class="p">(</span><span class="n">merged_df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Realiza un análisis estadístico completo y guarda el resultado en JSON.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">4.1. Iniciando análisis estadístico automatizado...&quot;</span><span class="p">)</span>
+
+    <span class="c1"># --- 4.1. Sección Metadata ---</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;fecha_analisis&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;num_registros&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">merged_df</span><span class="p">),</span>
+        <span class="s2">&quot;periodo_temporal&quot;</span><span class="p">:</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">merged_df</span><span class="p">[</span><span class="s1">&#39;Curs Acadèmic&#39;</span><span class="p">]</span>
+                                   <span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+    <span class="p">}</span>
+
+    <span class="c1"># --- 4.2. Estadísticas Globales ---</span>
+    <span class="c1"># Calculamos correlación de Pearson</span>
+    <span class="n">corr</span><span class="p">,</span> <span class="n">p_value</span> <span class="o">=</span> <span class="n">pearsonr</span><span class="p">(</span>
+        <span class="n">merged_df</span><span class="p">[</span><span class="s1">&#39;% Abandonament a primer curs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span>
+        <span class="n">merged_df</span><span class="p">[</span><span class="s1">&#39;Taxa rendiment&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
+
+    <span class="n">globales</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;abandono_medio&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">merged_df</span><span class="p">[</span><span class="s1">&#39;% Abandonament a primer curs&#39;</span><span class="p">]</span>
+                                <span class="o">.</span><span class="n">mean</span><span class="p">()),</span>
+        <span class="s2">&quot;rendimiento_medio&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">merged_df</span><span class="p">[</span><span class="s1">&#39;Taxa rendiment&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()),</span>
+        <span class="s2">&quot;correlacion_abandono_rendimiento&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">corr</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="c1"># --- 4.3. Análisis por Rama ---</span>
+    <span class="n">analisis_ramas</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">ramas</span> <span class="o">=</span> <span class="n">merged_df</span><span class="p">[</span><span class="s1">&#39;Branca&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">branch</span> <span class="ow">in</span> <span class="n">ramas</span><span class="p">:</span>
+        <span class="n">branch_data</span> <span class="o">=</span> <span class="n">merged_df</span><span class="p">[</span><span class="n">merged_df</span><span class="p">[</span><span class="s1">&#39;Branca&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">branch</span><span class="p">]</span>
+
+        <span class="c1"># Agrupar por año para tendencias</span>
+        <span class="n">branch_by_year</span> <span class="o">=</span> <span class="n">branch_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Curs Acadèmic&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
+            <span class="s1">&#39;% Abandonament a primer curs&#39;</span><span class="p">:</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Taxa rendiment&#39;</span><span class="p">:</span> <span class="s1">&#39;mean&#39;</span>
+        <span class="p">})</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">calcular_tendencia</span><span class="p">(</span><span class="n">valores</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">valores</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;estable&quot;</span>
+            <span class="n">slope</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">linregress</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">valores</span><span class="p">)),</span> <span class="n">valores</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">slope</span> <span class="o">&gt;</span> <span class="mf">0.01</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;creciente&quot;</span>
+            <span class="k">if</span> <span class="n">slope</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">0.01</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;decreciente&quot;</span>
+            <span class="k">return</span> <span class="s2">&quot;estable&quot;</span>
+
+        <span class="n">analisis_ramas</span><span class="p">[</span><span class="n">branch</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;abandono_medio&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">branch_data</span><span class="p">[</span><span class="s1">&#39;% Abandonament a primer curs&#39;</span><span class="p">]</span>
+                                    <span class="o">.</span><span class="n">mean</span><span class="p">()),</span>
+            <span class="s2">&quot;abandono_std&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">branch_data</span><span class="p">[</span><span class="s1">&#39;% Abandonament a primer curs&#39;</span><span class="p">]</span>
+                                  <span class="o">.</span><span class="n">std</span><span class="p">()),</span>
+            <span class="s2">&quot;abandono_min&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">branch_data</span><span class="p">[</span><span class="s1">&#39;% Abandonament a primer curs&#39;</span><span class="p">]</span>
+                                  <span class="o">.</span><span class="n">min</span><span class="p">()),</span>
+            <span class="s2">&quot;abandono_max&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">branch_data</span><span class="p">[</span><span class="s1">&#39;% Abandonament a primer curs&#39;</span><span class="p">]</span>
+                                  <span class="o">.</span><span class="n">max</span><span class="p">()),</span>
+            <span class="s2">&quot;rendimiento_medio&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">branch_data</span><span class="p">[</span><span class="s1">&#39;Taxa rendiment&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()),</span>
+            <span class="s2">&quot;rendimiento_std&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">branch_data</span><span class="p">[</span><span class="s1">&#39;Taxa rendiment&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()),</span>
+            <span class="s2">&quot;rendimiento_min&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">branch_data</span><span class="p">[</span><span class="s1">&#39;Taxa rendiment&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()),</span>
+            <span class="s2">&quot;rendimiento_max&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">branch_data</span><span class="p">[</span><span class="s1">&#39;Taxa rendiment&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()),</span>
+            <span class="s2">&quot;tendencia_abandono&quot;</span><span class="p">:</span> <span class="n">calcular_tendencia</span><span class="p">(</span>
+                <span class="n">branch_by_year</span><span class="p">[</span><span class="s1">&#39;% Abandonament a primer curs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()),</span>
+            <span class="s2">&quot;tendencia_rendimiento&quot;</span><span class="p">:</span> <span class="n">calcular_tendencia</span><span class="p">(</span>
+                <span class="n">branch_by_year</span><span class="p">[</span><span class="s1">&#39;Taxa rendiment&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()),</span>
+            <span class="s2">&quot;años_anomalos&quot;</span><span class="p">:</span> <span class="p">[]</span>
+        <span class="p">}</span>
+
+    <span class="c1"># --- 4.4. Ranking de Ramas ---</span>
+    <span class="n">resumen</span> <span class="o">=</span> <span class="n">merged_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Branca&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
+        <span class="s1">&#39;Taxa rendiment&#39;</span><span class="p">:</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;% Abandonament a primer curs&#39;</span><span class="p">:</span> <span class="s1">&#39;mean&#39;</span>
+    <span class="p">})</span>
+
+    <span class="n">rankings</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;mejor_rendimiento&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">resumen</span><span class="p">[</span><span class="s1">&#39;Taxa rendiment&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()],</span>
+        <span class="s2">&quot;peor_rendimiento&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">resumen</span><span class="p">[</span><span class="s1">&#39;Taxa rendiment&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()],</span>
+        <span class="s2">&quot;mayor_abandono&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">resumen</span><span class="p">[</span><span class="s1">&#39;% Abandonament a primer curs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()],</span>
+        <span class="s2">&quot;menor_abandono&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">resumen</span><span class="p">[</span><span class="s1">&#39;% Abandonament a primer curs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()]</span>
+    <span class="p">}</span>
+
+    <span class="c1"># Consolidación final según el ejemplo</span>
+    <span class="n">resultado_final</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="n">metadata</span><span class="p">,</span>
+        <span class="s2">&quot;estadisticas_globales&quot;</span><span class="p">:</span> <span class="n">globales</span><span class="p">,</span>
+        <span class="s2">&quot;analisis_por_rama&quot;</span><span class="p">:</span> <span class="n">analisis_ramas</span><span class="p">,</span>
+        <span class="s2">&quot;ranking_ramas&quot;</span><span class="p">:</span> <span class="n">rankings</span>
+    <span class="p">}</span>
+
+    <span class="c1"># Guardar en src/report/</span>
+    <span class="n">output_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;src&quot;</span><span class="p">,</span> <span class="s2">&quot;report&quot;</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">ruta_json</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="s2">&quot;analisi_estadistic.json&quot;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">ruta_json</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">resultado_final</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;💾 Informe JSON generado en: </span><span class="si">{</span><span class="n">ruta_json</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2026, Cristina Gomez.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+Licencia de Uso Académico
+
+Copyright (c) 2026 Cristina Gómez Campos 
+
+Este proyecto fue desarrollado como parte de la asignatura de Programación 
+para la Ciencia de Datos de la Universitat Oberta de Catalunya (UOC).
+
+================================================================================
+TÉRMINOS DE USO
+================================================================================
+
+1. PROPÓSITO
+   Este software se proporciona únicamente con fines educativos y académicos.
+
+2. PERMISOS OTORGADOS
+   Se permite:
+   - Consultar y estudiar el código fuente
+   - Usar como referencia para aprendizaje personal
+   - Modificar para uso personal educativo
+   - Citar como referencia bibliográfica con atribución apropiada
+
+3. RESTRICCIONES
+   NO se permite:
+   - Uso comercial sin autorización expresa del autor
+   - Copiar total o parcialmente para presentar como trabajo propio
+   - Distribuir sin atribución clara al autor original
+   - Usar en entregas académicas sin autorización
+
+4. EXENCIÓN DE RESPONSABILIDAD
+   El software se proporciona "TAL CUAL", sin garantías de ningún tipo,
+   expresas o implícitas, incluyendo pero no limitado a garantías de
+   comercialización, idoneidad para un propósito particular y no infracción.
+   
+   En ningún caso el autor será responsable por cualquier reclamo, daño u
+   otra responsabilidad derivada del uso del software.
+
+
+================================================================================
+INFORMACIÓN DEL AUTOR
+================================================================================
+
+Autor: Cristina Gómez Campos
+Institución: Universitat Oberta de Catalunya (UOC)
+Asignatura: Programación para la Ciencia de Datos
+Proyecto: PEC4 - Análisis de Rendimiento y Abandono Universitario
+Fecha: Enero 2026
+
+================================================================================

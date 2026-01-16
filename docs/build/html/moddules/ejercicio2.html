@@ -1,0 +1,230 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ejercicio 2 - Limpieza y Fusión &mdash; documentación de PEC4 - 1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4936afed"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            PEC4
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Ejercicio 2 - Limpieza y Fusión</a><ul>
+<li><a class="reference internal" href="#src.modules.ejercicio2.agrupar_por_caracteristicas"><code class="docutils literal notranslate"><span class="pre">agrupar_por_caracteristicas()</span></code></a></li>
+<li><a class="reference internal" href="#src.modules.ejercicio2.eliminar_columnas"><code class="docutils literal notranslate"><span class="pre">eliminar_columnas()</span></code></a></li>
+<li><a class="reference internal" href="#src.modules.ejercicio2.fusionar_datasets"><code class="docutils literal notranslate"><span class="pre">fusionar_datasets()</span></code></a></li>
+<li><a class="reference internal" href="#src.modules.ejercicio2.limpiar_y_fusionar"><code class="docutils literal notranslate"><span class="pre">limpiar_y_fusionar()</span></code></a></li>
+<li><a class="reference internal" href="#src.modules.ejercicio2.renombrar_columnas_abandono"><code class="docutils literal notranslate"><span class="pre">renombrar_columnas_abandono()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PEC4</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Ejercicio 2 - Limpieza y Fusión</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/moddules/ejercicio2.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-src.modules.ejercicio2">
+<span id="ejercicio-2-limpieza-y-fusion"></span><h1>Ejercicio 2 - Limpieza y Fusión<a class="headerlink" href="#module-src.modules.ejercicio2" title="Link to this heading"></a></h1>
+<p>Ejercicio 2: Limpieza de datos y fusión de datasets.</p>
+<p>Este módulo contiene funciones para limpiar, homogeneizar y fusionar
+los datasets de rendimiento y abandono.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.modules.ejercicio2.agrupar_por_caracteristicas">
+<span class="sig-prename descclassname"><span class="pre">src.modules.ejercicio2.</span></span><span class="sig-name descname"><span class="pre">agrupar_por_caracteristicas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columna_valor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/src/modules/ejercicio2.html#agrupar_por_caracteristicas"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.modules.ejercicio2.agrupar_por_caracteristicas" title="Link to this definition"></a></dt>
+<dd><p>Agrupa el DataFrame por características comunes y calcula la media.</p>
+<dl class="simple">
+<dt>Agrupa por: [“Curs Acadèmic”, “Tipus universitat”, “Sigles”,</dt><dd><p>“Tipus Estudi”, “Branca”, “Sexe”, “Integrat S/N”]</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – DataFrame a agrupar.</p></li>
+<li><p><strong>columna_valor</strong> (<em>str</em>) – Nombre de la columna con los valores a promediar
+(“Taxa rendiment” o “% Abandonament a primer curs”).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame agrupado con la media de la columna especificada.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.modules.ejercicio2.eliminar_columnas">
+<span class="sig-prename descclassname"><span class="pre">src.modules.ejercicio2.</span></span><span class="sig-name descname"><span class="pre">eliminar_columnas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_rendimiento</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_abandono</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="../_modules/src/modules/ejercicio2.html#eliminar_columnas"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.modules.ejercicio2.eliminar_columnas" title="Link to this definition"></a></dt>
+<dd><p>Elimina columnas innecesarias de ambos DataFrames.</p>
+<p>Elimina de ambos: “Universitat”, “Unitat”
+Elimina de rendimiento: “Crèdits ordinaris superats”,</p>
+<blockquote>
+<div><p>“Crèdits ordinaris matriculats”</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df_rendimiento</strong> (<em>pd.DataFrame</em>) – DataFrame de rendimiento.</p></li>
+<li><p><strong>df_abandono</strong> (<em>pd.DataFrame</em>) – DataFrame de abandono.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>(df_rendimiento_limpio, df_abandono_limpio)</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.modules.ejercicio2.fusionar_datasets">
+<span class="sig-prename descclassname"><span class="pre">src.modules.ejercicio2.</span></span><span class="sig-name descname"><span class="pre">fusionar_datasets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_rendimiento</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_abandono</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/src/modules/ejercicio2.html#fusionar_datasets"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.modules.ejercicio2.fusionar_datasets" title="Link to this definition"></a></dt>
+<dd><p>Fusiona los datasets de rendimiento y abandono.</p>
+<p>Realiza un merge interno (inner join) para mantener solo las filas
+que coinciden en ambos datasets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df_rendimiento</strong> (<em>pd.DataFrame</em>) – DataFrame de rendimiento agrupado.</p></li>
+<li><p><strong>df_abandono</strong> (<em>pd.DataFrame</em>) – DataFrame de abandono agrupado.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame fusionado.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.modules.ejercicio2.limpiar_y_fusionar">
+<span class="sig-prename descclassname"><span class="pre">src.modules.ejercicio2.</span></span><span class="sig-name descname"><span class="pre">limpiar_y_fusionar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_rendimiento</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_abandono</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/src/modules/ejercicio2.html#limpiar_y_fusionar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.modules.ejercicio2.limpiar_y_fusionar" title="Link to this definition"></a></dt>
+<dd><p>Ejecuta todo el proceso de limpieza y fusión.</p>
+<p>Pasos:
+1. Renombrar columnas de abandono
+2. Eliminar columnas innecesarias
+3. Agrupar ambos datasets por características
+4. Fusionar datasets</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df_rendimiento</strong> (<em>pd.DataFrame</em>) – DataFrame de rendimiento original.</p></li>
+<li><p><strong>df_abandono</strong> (<em>pd.DataFrame</em>) – DataFrame de abandono original.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame fusionado y limpio.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.modules.ejercicio2.renombrar_columnas_abandono">
+<span class="sig-prename descclassname"><span class="pre">src.modules.ejercicio2.</span></span><span class="sig-name descname"><span class="pre">renombrar_columnas_abandono</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_abandono</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/src/modules/ejercicio2.html#renombrar_columnas_abandono"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.modules.ejercicio2.renombrar_columnas_abandono" title="Link to this definition"></a></dt>
+<dd><p>Renombra las columnas del dataset de abandono para que coincidan
+con las del dataset de rendimiento.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df_abandono</strong> (<em>pd.DataFrame</em>) – DataFrame de abandono con columnas originales.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame con columnas renombradas.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2026, Cristina Gomez.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
