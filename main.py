@@ -20,8 +20,43 @@ def main():
 Ejemplos de uso:
   python main.py              Ejecuta todos los ejercicios
   python main.py -ex 1        Ejecuta solo el ejercicio 1 (EDA)
-  python main.py -ex 2        Ejecuta solo el ejercicio 2 (limpieza)
+  python main.py -ex 2        Ejecuta solo el ejercicio 2 (Limpieza y fusión)
+  python main.py -ex 3        Ejecuta solo el ejercicio 3 (Análisis visual)
+  python main.py -ex 4        Ejecuta solo el ejercicio 4 (Estadística avanzada)
   python main.py --help       Muestra esta ayuda
+
+Comandos de tests:
+  # Ejecutar todos los tests
+  $env:PYTHONPATH = $PWD
+  python tests/run_tests.py
+
+  # Ejecutar test específico
+  python -m unittest tests.test_ejercicio1 -v
+
+  # Cobertura de código
+  coverage run -m unittest discover -s tests -p "test_*.py"
+  coverage report -m
+  coverage html
+
+Comandos de documentación:
+  # Generar documentación HTML con Sphinx
+  cd docs
+  sphinx-build -b html source build/html
+  start build/html/index.html
+
+Comandos de linter:
+  # Análisis con pylint
+  pylint src/ main.py
+
+  # Reporte detallado con score
+  pylint src/ main.py --reports=y
+
+Más información:
+  Consulta el README.md para información detallada sobre:
+  - Estructura del proyecto
+  - Instalación y configuración del entorno virtual
+  - Descripción de cada ejercicio
+  - Gestión de dependencias
         """
     )
 
