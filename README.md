@@ -33,7 +33,13 @@ PEC4/
 │   └── dataset_fusionado.csv
 │
 └── tests/                      # Pruebas unitarias
-    └── test_pec4.py
+   ├── test_ejercicio1.py          # Tests para load_dataset y EDA
+   ├── test_ejercicio2.py          # Tests para limpieza y fusión
+   ├── test_ejercicio3.py          # Tests para análisis visual
+   ├── test_ejercicio4.py          # Tests para análisis estadístico
+   ├── test_ejecutar_ejercicios.py # Tests para módulo ejecutor
+   ├── test_main.py                # Tests para punto de entrada
+   └── run_tests.py                # Script ejecutor de tests
 ```
 
 ## 🚀 Instalación
